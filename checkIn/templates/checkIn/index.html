@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>List of IDs</h2>
+    <ul>
+        {% for id in idcardList %}
+            <div>
+                <p>{{ id.name }}</p>
+                <p>{{ id.height_cm }}
+                <p>{{ id.weight_ib }}</p>
+                <p>{{ id.eye_color }}</p>
+                <img src={{ id.image.url }} width='500' height='300' alt="">
+            </div>
+        {% endfor %}
+    </ul>
+    <div>
+        <a href="{% url 'createnew' %}">Create New ID</a>
+    </div>
+    
+</body>
+</html>
