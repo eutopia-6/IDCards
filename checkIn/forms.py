@@ -9,8 +9,11 @@ class RegistrationForm(forms.Form):
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username')
-    password = forms.CharField(label='Password')
+    password = forms.CharField(label='Password', widget=forms.PasswordInput())
 
 class RegisterAccount(forms.Form):
     username = forms.CharField(label='Username')
-    password = forms.CharField(label='Password')
+    password = forms.CharField(label='Password', widget=forms.PasswordInput())
+
+class TextForm(forms.Form):
+    text_to_post = forms.Textarea()

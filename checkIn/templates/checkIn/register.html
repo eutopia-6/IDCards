@@ -8,16 +8,16 @@
 </head>
 <body>
 
-    <h2>Create New ID</h2>
-    <form action="{% url 'createnew' %}" method="POST" enctype="multipart/form-data">
+    <h2>Register Page</h2>
+    <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        
-        {{ form.as_p }}
+
+        {{ register_form.as_p }}
 
         <button type='submit'>Create</button>
 
     </form>
     
-    <a href="{% url "index" %}">IDs</a>
+    
 </body>
 </html>
