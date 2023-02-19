@@ -8,16 +8,14 @@
 </head>
 <body>
 
-    <h2>Create New ID</h2>
-    <form action="{% url 'createnew' %}" method="POST" enctype="multipart/form-data">
+    <h2>Login Page</h2>
+    <form action="{% url 'logout' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        
-        {{ registration_form.as_p }}
 
-        <button type='submit'>Create</button>
+        <button type='submit'>Logout</button>
 
     </form>
     
-    <a href="{% url "index" %}">IDs</a>
+    
 </body>
 </html>

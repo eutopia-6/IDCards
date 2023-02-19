@@ -16,4 +16,4 @@ class RegisterAccount(forms.Form):
     password = forms.CharField(label='Password', widget=forms.PasswordInput())
 
 class TextForm(forms.Form):
-    text_to_post = forms.Textarea()
+    text_to_post = forms.CharField(widget=forms.Textarea)

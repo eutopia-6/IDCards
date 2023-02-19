@@ -14,4 +14,5 @@ urlpatterns = [
     path('registerpage/', views.registerPage.as_view(), name='register'),
     path('success/', views.success.as_view(), name='success'),
     path('groupchat/', views.groupChat.as_view(), name='groupchat'),
+    path('logout/', views.logoutPage.as_view(), name='logout'),
 ]
