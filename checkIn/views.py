@@ -43,7 +43,7 @@ class registerPage(View):
     def get(self, request):
         try:
             if request.session['loggedIn']:
-                return render(request, 'checkIn/index.html')
+                return redirect(reverse('index'))
             else:
                 register_form = RegisterAccount()
                 return render(request, 'checkIn/register.html', {
@@ -74,7 +74,7 @@ class index(View):
             if request.session['loggedIn']:
                 idcardList = idcard.objects.all()
                 return render(request, 'checkIn/index.html', {
-                    'idcardList':idcardList
+                    'idcardList':idcardList,
                 })
             else:
                 return redirect(reverse('login'))
@@ -87,7 +87,7 @@ class createNew(View):
             if request.session['loggedIn']:
                 registration_form = RegistrationForm()
                 return render(request, 'checkIn/createnew.html', {
-                    'registration_form':registration_form
+                    'createNew_form':registration_form
                 })
             else:
                 return redirect(reverse('login'))

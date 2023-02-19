@@ -16,7 +16,7 @@
                 <p>{{ id.height_cm }}
                 <p>{{ id.weight_ib }}</p>
                 <p>{{ id.eye_color }}</p>
-                <img src={{ id.image.url }} width='500' height='300' alt="">
+                <img src={{ id.image.url }} width='500' height='300' alt={{ id.name }}>
             </div>
         {% endfor %}
     </ul>

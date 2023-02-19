@@ -12,7 +12,7 @@
     <form action="{% url 'createnew' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         
-        {{ registration_form.as_p }}
+        {{ createNew_form.as_p }}
 
         <button type='submit'>Create</button>
 
