@@ -41,17 +41,14 @@ class loginPage(View):
 
 class registerPage(View):
     def get(self, request):
-        try:
-            if request.session['loggedIn']:
-                return redirect(reverse('index'))
-            else:
-                register_form = RegisterAccount()
-                return render(request, 'checkIn/register.html', {
-                    'register_form':register_form,
-                })
-        except:
-            return redirect(reverse('login'))
-            
+        if request.session['loggedIn']:
+            return redirect(reverse('index'))
+        else:
+            register_form = RegisterAccount()
+            return render(request, 'checkIn/register.html', {
+                'register_form':register_form,
+            })
+        
     def post(self, request):
         register_form = RegisterAccount(request.POST)
         if register_form.is_valid():
@@ -70,28 +67,22 @@ class registerPage(View):
 
 class index(View):
     def get(self, request):
-        try:
-            if request.session['loggedIn']:
-                idcardList = idcard.objects.all()
-                return render(request, 'checkIn/index.html', {
-                    'idcardList':idcardList,
-                })
-            else:
-                return redirect(reverse('login'))
-        except:
+        if request.session['loggedIn']:
+            idcardList = idcard.objects.all()
+            return render(request, 'checkIn/index.html', {
+                'idcardList':idcardList,
+            })
+        else:
             return redirect(reverse('login'))
 
 class createNew(View):
     def get(self, request):
-        try:
-            if request.session['loggedIn']:
-                registration_form = RegistrationForm()
-                return render(request, 'checkIn/createnew.html', {
-                    'createNew_form':registration_form
-                })
-            else:
-                return redirect(reverse('login'))
-        except:
+        if request.session['loggedIn']:
+            registration_form = RegistrationForm()
+            return render(request, 'checkIn/createnew.html', {
+                'createNew_form':registration_form
+            })
+        else:
             return redirect(reverse('login'))
 
     def post(self, request):
@@ -118,17 +109,14 @@ class success(View):
 
 class groupChat(View):
     def get(self, request):
-        try: 
-            if request.session['loggedIn']:
-                text_to_post = TextForm()
-                chats = chat.objects.all()
-                return render(request, 'checkIn/groupchat.html', {
-                    'chats':chats,
-                    'text_to_post': text_to_post,
-                })
-            else:
-                return redirect(reverse('login'))
-        except:
+        if request.session['loggedIn']:
+            text_to_post = TextForm()
+            chats = chat.objects.all()
+            return render(request, 'checkIn/groupchat.html', {
+                'chats':chats,
+                'text_to_post': text_to_post,
+            })
+        else:
             return redirect(reverse('login'))
 
     def post(self, request):
@@ -146,5 +134,5 @@ class logoutPage(View):
     def post(self, request):
         request.session['loggedIn'] = False
         request.session['userName'] = 'Blank'
-        return redirect(reverse('index'))
+        return redirect(reverse('login'))
 
